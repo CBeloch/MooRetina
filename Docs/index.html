@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>MooRetina</title>
+		<meta name = "viewport" content = "width=320, user-scalable = no">
+		<script src="http://ajax.googleapis.com/ajax/libs/mootools/1.2.5/mootools-yui-compressed.js" type="text/javascript"></script>
+		<script src="../Source/MooRetina.js" type="text/javascript"></script>
+		
+		<style type="text/css">
+			body, html {
+				padding: 0%; margin: 0%;
+				font-family: "Helvetica Neue", Helvetica, Verdana, sans-serif;
+				font-size: 12px;
+				width: 320px;;
+			}
+			#head { background: black; color:  white; padding: 5px;}
+			#head h1 { margin: 0%; padding: 0%; font-weight: normal; }
+			#content { padding: 5px; }
+			#content p { margin: 0px 0px 10px; }
+			#content h2 { margin-bottom: 0px; padding-bottom: 0px; }
+			#retina_area { position: relative; }
+			#enable_retina {
+				position: absolute;
+				bottom: 10px;
+				left: 50%;
+				margin-left: -75px;
+				padding: 5px;
+				background: rgba(0, 0, 0, 0.7);
+				color: white;
+				font-size: 16px;
+				text-align: center;
+				width: 150px;
+				-webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+				-moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+				border-radius: 10px;
+				-webkit-border-radius: 10px;
+				-moz-border-radius: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="head">
+			<h1>MooRetina Demo</h1>
+		</div>
+		
+		<div id="retina_area">
+			<img src="images/untitled_25_by_scotto.jpg" style="width: 320px; z-index: 1;" />
+		
+			<div id="enable_retina">Device not supported</div>
+		</div>
+		
+		<div id="content">
+			<p>
+				The newest iPhone and iPod Touch models have a new display called <a href="http://http://www.apple.com/iphone/features/retina-display.html" title="Retina Display at Apple.com" target="_blank">Retina display</a> which has a much higher pixel density (324 pixels per inch).<br>
+				This small plugin loads high resolution versions of your images (if they exist) so they look better on devices with Retina display.
+			</p>
+			<h2>Credits</h2>
+			<p>
+				The original idea by <a href="http://troymcilvena.com/post/998277515/jquery-retina" target="_blank">Troy Mcilvena</a> who realized this with jQuery.<br>
+				MooRetina by <a href="http://blog.cbeloch.de" target="_blank">cbeloch</a>.<br>
+				Picture by <a href="http://scotto.deviantart.com/art/Untitled-25-180040620" target="_blank" title="DeviantART - Untitled 25 by scotto">scotto</a>.
+			</p>		
+		</div>
+		
+		<script type="text/javascript">
+			window.addEvent('domready', function() {
+				if(window.devicePixelRatio >= 2){
+					$('enable_retina').set('text', 'Enable MooRetina');
+				
+					$('enable_retina').addEvent('click', function(){
+						new MooRetina();
+						this.destroy();
+					});
+				}
+			});
+		</script>
+	</body>
+</html>
