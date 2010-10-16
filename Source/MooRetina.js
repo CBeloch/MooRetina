@@ -10,7 +10,7 @@ authors:
 - Christopher Beloch
 
 requires: 
-  core:1.2.5: [Element, Request]
+  core:1.3: [Element, Element.Style, Request]
 
 provides: [MooRetina]
 
@@ -39,6 +39,15 @@ var MooRetina = new Class({
 			var checkImage = new Request({
 				url: newSrc,
 				onSuccess: function(){
+					/*
+						If an image doesn't have a width or height attribute, it could be
+						that the retina version blows the layout.
+					*/
+					if(!imageElement.getProperty('width') && !imageElement.getProperty('height')){
+						// Even if the following line makes no sense at first, Element.getStyle
+						imageElement.setStyle('width', imageElement.getStyle('width'));
+					}
+					
 					imageElement.set('src', newSrc);
 				}
 			}).send();	
