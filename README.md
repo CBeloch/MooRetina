@@ -11,13 +11,15 @@ This is a port of [Troy Mcilvena's jQuery Retina Plugin](http://troymcilvena.com
 How to use
 ----------
 
-The easiest way ist to just initialize the class:
+The easiest way is to just initialize the class:
 
 	#JS
-	new MooRetina();
+	window.addEvent('domready', function() {
+		new MooRetina();
+	});
 
 By using this default method, MooRetina tries to set the src parameter of each img-tag to a url with *-2x* as suffix.
-This means that *images/myPicture.jpg* will be reliked to *images/myPicture-2x.jpg*
+This means that *images/myPicture.jpg* will be relinked to *images/myPicture-2x.jpg*
 
 If you don't want to name your retina files with a *-2x* suffix but with a *_retina* you can do this by initializing MooRetina like this:
 
@@ -28,3 +30,8 @@ The other way to use MooRetina is by using it on selected Elements and not all i
 
 	#JS
 	new MooRetina($$('.hasRetina'));
+
+Does it also work with MooTools 1.2.x ?
+----------
+
+_Yes!_
